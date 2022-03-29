@@ -143,15 +143,24 @@ footer {
 
 .list-items{
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    --gutter: 0px;
+    margin-top: 25px;
 }
 
 .item{
     margin: 10px;
     background-color: aqua;
     cursor: pointer;
-    width: 100%;
+    width: 25%;
     text-align: center;
+    justify-content: center;
+    align-items: center;
 }
+
 
 .item:hover{
     background-color: deeppink;
@@ -163,6 +172,7 @@ footer {
     cursor: pointer;
     background-color: chartreuse;
     text-align: center;
+    width: 25%;
 }
 
 .loading-spinner {

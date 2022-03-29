@@ -19,7 +19,8 @@ export async function createListItems(listItem){
 export async function getShoppingItems(){
     const response = await client
         .from('shopping_list')
-        .select('*');
+        .select('*')
+        .order('id', { ascending: true });
 
     return response.body;
 }
