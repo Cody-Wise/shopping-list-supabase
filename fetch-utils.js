@@ -10,7 +10,7 @@ export function getUser() {
 export async function createListItems(listItem){
     const response = await client
 
-        .from('shopping-list')
+        .from('shopping_list')
         .insert(listItem);
 
     return response.body;
@@ -18,7 +18,7 @@ export async function createListItems(listItem){
 
 export async function getShoppingItems(){
     const response = await client
-        .from('shopping-list')
+        .from('shopping_list')
         .select('*');
 
     return response.body;
@@ -27,7 +27,7 @@ export async function getShoppingItems(){
 export async function deleteItems(){
     const user = getUser();
     const response = await client
-        .from('shopping-list')
+        .from('shopping_list')
         .delete()
         .match ({ user_id: user.id });
 
@@ -36,8 +36,18 @@ export async function deleteItems(){
 
 export async function buyItems(id){
     const response = await client
-        .from('shopping-list')
+        .from('shopping_list')
         .update({ is_bought: true })
+        .match({ id });
+    
+
+    return response.body;
+}
+
+export async function unBuyItems(id){
+    const response = await client
+        .from('shopping_list')
+        .update({ is_bought: false })
         .match({ id });
     
 
