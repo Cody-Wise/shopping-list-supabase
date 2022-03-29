@@ -6,6 +6,7 @@ import {
     deleteItems,
     buyItems,
     unBuyItems,
+    deleteIndividualItems,
 
 } from '../fetch-utils.js';
 
@@ -59,7 +60,8 @@ deleteButtonEl.addEventListener('click', async () => {
     
 });
 
-async function fetchAndDisplayItems() {
+
+export async function fetchAndDisplayItems() {
 
     toggleLoadingSpinner();
 
@@ -99,7 +101,22 @@ async function fetchAndDisplayItems() {
                 fetchAndDisplayItems();
             });
         }
-        listItemsEl.append(listItems);
+        const listDeleteButton = document.createElement('button');
+        listDeleteButton.classList.add('small-delete-button');
+        listDeleteButton.textContent = 'Delete';
+        listDeleteButton.addEventListener('click', async () => {
+
+            console.log('hellow');
+
+
+            await deleteIndividualItems(item.id);
+        
+            await fetchAndDisplayItems();
+        
+        
+            
+        });
+        listItemsEl.append(listItems, listDeleteButton);
         
 
 
@@ -113,6 +130,8 @@ window.addEventListener('load', () => {
     fetchAndDisplayItems();
     
 });
+
+
 
 
 

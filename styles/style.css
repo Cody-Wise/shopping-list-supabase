@@ -180,3 +180,17 @@ footer {
 .invisible { 
     display: none;
 }
+
+.small-delete-button{
+
+    background-color: red;
+    color: whitesmoke;
+    margin: 10px;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+
+}

@@ -34,6 +34,17 @@ export async function deleteItems(){
     return response.body;
 }
 
+export async function deleteIndividualItems(id){
+    // const user = getUser();
+    const response = await client
+        .from('shopping_list')
+        .delete()
+        .match ({ id });
+
+    return response.body;
+}
+
+
 export async function buyItems(id){
     const response = await client
         .from('shopping_list')
