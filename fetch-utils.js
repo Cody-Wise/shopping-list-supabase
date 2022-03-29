@@ -7,6 +7,43 @@ export function getUser() {
     return client.auth.session() && client.auth.session().user;
 }
 
+export async function createListItems(listItem){
+    const response = await client
+
+        .from('shopping-list')
+        .insert(listItem);
+
+    return response.body;
+}
+
+export async function getShoppingItems(){
+    const response = await client
+        .from('shopping-list')
+        .select('*');
+
+    return response.body;
+}
+
+export async function deleteItems(){
+    const user = getUser();
+    const response = await client
+        .from('shopping-list')
+        .delete()
+        .match ({ user_id: user.id });
+
+    return response.body;
+}
+
+export async function buyItems(id){
+    const response = await client
+        .from('shopping-list')
+        .update({ is_bought: true })
+        .match({ id });
+    
+
+    return response.body;
+}
+
 export function checkAuth() {
     const user = getUser();
 
@@ -15,7 +52,7 @@ export function checkAuth() {
 
 export function redirectIfLoggedIn() {
     if (getUser()) {
-        location.replace('./other-page');
+        location.replace('./shopping');
     }
 }
 

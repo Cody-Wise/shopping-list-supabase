@@ -21,12 +21,21 @@
     </header>    
     <button id="logout">Logout</button>
     <main>
-        <h1>You are logged in!</h1>
+        <button id="delete-button">Delete List?</button>
+        <form id="shopping-list">
+        <label>Amount   <input name="amount"></label> 
+       <label>Item    <input name="item"></label> 
+            <button id="submit">Submit</button>
+        </form>
+
+        <div class="list-items">
+            
+        </div>
     </main>
     <footer>
         <div class="copy gutter-right">&copy; 2021 Alchemy Code Lab</div>
     </footer>
-    <script type="module" src="./other-page.js"></script>
+    <script type="module" src="./shopping.js"></script>
 </body>
 
 </html>
