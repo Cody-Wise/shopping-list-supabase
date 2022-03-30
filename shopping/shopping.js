@@ -6,7 +6,6 @@ import {
     deleteItems,
     buyItems,
     unBuyItems,
-    deleteIndividualItems,
 
 } from '../fetch-utils.js';
 
@@ -112,21 +111,7 @@ export async function fetchAndDisplayItems() {
         
         
         
-        // const listDeleteButton = document.createElement('button');
-        // listDeleteButton.classList.add('small-delete-button');
-        // listDeleteButton.textContent = 'Delete';
-        // listDeleteButton.addEventListener('click', async () => {
-            
-            //     console.log('hellow');
-            
-            
-            //     await deleteIndividualItems(item.id);
-            
-            //     await fetchAndDisplayItems();
-            
-            
-            
-            // });
+        
         listItemsEl.append(listItems, checkBoxes);
             
             
@@ -143,11 +128,10 @@ window.addEventListener('load', () => {
 });
     
 const checkBoxEls = document.getElementsByName('checkbox');
-console.log(checkBoxEls);
+
     
 buyAllEl.addEventListener('click', async () => {
 
-    console.log('hello');
 
 
     for (let checkBoxEl of checkBoxEls){
@@ -163,9 +147,6 @@ buyAllEl.addEventListener('click', async () => {
 });
 
 unBuyAllEl.addEventListener('click', async () => {
-
-    console.log('hello');
-
 
     for (let checkBoxEl of checkBoxEls){
         

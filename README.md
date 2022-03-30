@@ -42,3 +42,5 @@ Additional considerations:
    Delete items function is fired
    Dom gets updated via Display and Fetch
    Items are removed from dom
+
+4. On load display and fetch all
