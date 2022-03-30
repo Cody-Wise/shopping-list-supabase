@@ -16,6 +16,8 @@ const deleteButtonEl = document.querySelector('#delete-button');
 const formEl = document.querySelector('#shopping-list');
 const listItemsEl = document.querySelector('.list-items');
 const loadingEl = document.querySelector('.loading-spinner');
+const buyAllEl = document.querySelector('#buy-all');
+const unBuyAllEl = document.querySelector('#unbuy-all');
 
 
 
@@ -101,37 +103,82 @@ export async function fetchAndDisplayItems() {
                 fetchAndDisplayItems();
             });
         }
-        const listDeleteButton = document.createElement('button');
-        listDeleteButton.classList.add('small-delete-button');
-        listDeleteButton.textContent = 'Delete';
-        listDeleteButton.addEventListener('click', async () => {
-
-            console.log('hellow');
+        const checkBoxes = document.createElement('input');
+        checkBoxes.type = 'checkbox';
+        checkBoxes.id = item.id;
+        checkBoxes.name = 'checkbox';
 
 
-            await deleteIndividualItems(item.id);
-        
-            await fetchAndDisplayItems();
         
         
+        
+        // const listDeleteButton = document.createElement('button');
+        // listDeleteButton.classList.add('small-delete-button');
+        // listDeleteButton.textContent = 'Delete';
+        // listDeleteButton.addEventListener('click', async () => {
             
-        });
-        listItemsEl.append(listItems, listDeleteButton);
-        
-
-
+            //     console.log('hellow');
+            
+            
+            //     await deleteIndividualItems(item.id);
+            
+            //     await fetchAndDisplayItems();
+            
+            
+            
+            // });
+        listItemsEl.append(listItems, checkBoxes);
+            
+            
+            
     }
     toggleLoadingSpinner();
-
+        
 }
-
-window.addEventListener('load', () => {
-
-    fetchAndDisplayItems();
     
+window.addEventListener('load', () => {
+        
+    fetchAndDisplayItems();
+        
+});
+    
+const checkBoxEls = document.getElementsByName('checkbox');
+console.log(checkBoxEls);
+    
+buyAllEl.addEventListener('click', async () => {
+
+    console.log('hello');
+
+
+    for (let checkBoxEl of checkBoxEls){
+        
+
+
+        await buyItems(checkBoxEl.id);
+
+        
+        await fetchAndDisplayItems();
+    }
+        
 });
 
+unBuyAllEl.addEventListener('click', async () => {
+
+    console.log('hello');
 
 
+    for (let checkBoxEl of checkBoxEls){
+        
 
 
+        await unBuyItems(checkBoxEl.id);
+
+        
+        await fetchAndDisplayItems();
+    }
+        
+});
+    
+    
+    
+    
