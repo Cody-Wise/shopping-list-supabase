@@ -43,4 +43,4 @@ Additional considerations:
    Dom gets updated via Display and Fetch
    Items are removed from dom
 
-4. On load display and fetch all
+4. On load display and fetch all items.
